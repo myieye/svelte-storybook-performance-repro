@@ -2,13 +2,6 @@
 	import { cn, type WithElementRef } from "$lib/utils.js";
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
 	import { type VariantProps, tv } from "tailwind-variants";
-	// Using these significantly increases the start time even though they're
-	// basically just wrappers...
-	import * as Drawer from "../drawer";
-	import * as ContextMenu from "../context-menu";
-	// ...around these. Using these directly is much faster.
-	// import * as DrawerPrimitive from "vaul-svelte";
-	// import * as ContextMenuPrimitive from "bits-ui";
 
 	export const buttonVariants = tv({
 		base: "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium outline-none transition-all focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -60,12 +53,6 @@
 	}: ButtonProps = $props();
 </script>
 
-<!-- Slow -->
-<Drawer.Root></Drawer.Root>
-<ContextMenu.Root></ContextMenu.Root>
-<!-- Fast -->
-<!-- <DrawerPrimitive.Drawer.Root></DrawerPrimitive.Drawer.Root>
-<ContextMenuPrimitive.ContextMenu.Root></ContextMenuPrimitive.ContextMenu.Root> -->
 
 {#if href}
 	<a
